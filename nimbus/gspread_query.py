@@ -89,10 +89,3 @@ def get_first_sheet_as_json_array(url):
 
     return data
 
-
-sheet_url = 'https://docs.google.com/spreadsheets/d/1jyWzlila-hzJJAF2rWGfbbCELwW3gx2wVQlIWS8lB5Y'
-sheet_name = 'Sheet1'
-
-
-new_data = get_json_array(sheet_url, sheet_name)
-
