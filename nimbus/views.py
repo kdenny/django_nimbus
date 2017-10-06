@@ -19,8 +19,17 @@ class GoogleSheetDataView(APIView):
 
     def get(self, request, sheet_id='0', sheet_name='none'):
         if (sheet_id != '0' and sheet_name != 'none'):
-            sheet_url = 'https://docs.google.com/spreadsheets/d/' + sheet_id
+            if sheet_id[:4] != 'http':
+                sheet_url = 'https://docs.google.com/spreadsheets/d/' + sheet_id
+            else:
+                sheet_url = sheet_id
             data = get_json_array(sheet_url, sheet_name)
+        elif (sheet_id != '0' and sheet_name == 'none'):
+            if sheet_id[:4] != 'http':
+                sheet_url = 'https://docs.google.com/spreadsheets/d/' + sheet_id
+            else:
+                sheet_url = sheet_id
+            data = get_first_sheet_as_json_array(sheet_url)
 
         return Response(data)
 

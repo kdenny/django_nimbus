@@ -77,6 +77,17 @@ def get_json_array(url, sheet_name):
 
     return data
 
+def get_first_sheet_as_json_array(url):
+    sheet_file = gc.open_by_url(url)
+    worksheet = sheet_file.get_worksheet(0)
+    headers = get_headers(worksheet)
+    data = read_data(worksheet, headers)
+
+    jfile_name = sheet_name + '.json'
+    with open(jfile_name, 'wb') as ofile:
+        json.dump(data, ofile)
+
+    return data
 
 
 sheet_url = 'https://docs.google.com/spreadsheets/d/1jyWzlila-hzJJAF2rWGfbbCELwW3gx2wVQlIWS8lB5Y'
