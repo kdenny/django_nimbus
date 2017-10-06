@@ -25,7 +25,11 @@ SECRET_KEY = 'ai+3#tu^85@j%y=i@0xr41#er%z1qd=zk)-x-^z(!db0-vi%6h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'nimbuscharts.pythonanywhere.com',
+    'localhost:8000',
+    'http://127.0.0.1:8000'
+]
 
 CORS_ORIGIN_ALLOW_ALL = True
 
